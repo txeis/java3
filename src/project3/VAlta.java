@@ -234,8 +234,130 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
             }
         }
     }
-    public void camposCorrectos(){
-        
+    public void camposCorrectos(Empleado emp){
+        Vmensaje msj;
+        if(emp instanceof Oficinas){
+            Oficinas of=(Oficinas)emp;
+            
+            switch(of.ofiCorrecto()){
+                case 1:
+                    msj=new Vmensaje("El dni es incorrecto.");
+                    Tdni.setText("");
+                    break;
+                case 2:
+                    msj=new Vmensaje("El nombre es incorrecto.");
+                    Tnombre.setText("");
+                    break;
+                case 3:
+                    msj=new Vmensaje("Los apellidos son incorrectos.");
+                    Tapellidos.setText("");
+                    break;
+                case 4:
+                    msj=new Vmensaje("El Nº de hijos es incorrecto.");
+                    TnHijos.setText("");
+                    break;
+                case 5:
+                    msj=new Vmensaje("La categoria es incorrecta.\n OPCIONES: A, B o C");
+                    Tcategoria.setText("");
+                    break;
+                case 6:
+                    msj=new Vmensaje("El puesto es incorrecto.");
+                    Tpuesto.setText("");
+                    break;
+                default:
+                    if(con.altaEmpleado(of)){
+                        msj=new Vmensaje("El alta se ha realizado correctamente");
+                       this.dispose(); 
+                    }
+                    else{
+                        limpiarPantalla();
+                    }
+            }
+            
+        }
+        if(emp instanceof Laboral){
+            Laboral lab=(Laboral)emp;
+            
+            switch(lab.labCorrecto()){
+                case 1:
+                    msj=new Vmensaje("El dni es incorrecto.");
+                    Tdni.setText("");
+                    break;
+                case 2:
+                    msj=new Vmensaje("El nombre es incorrecto.");
+                    Tnombre.setText("");
+                    break;
+                case 3:
+                    msj=new Vmensaje("Los apellidos son incorrectos.");
+                    Tapellidos.setText("");
+                    break;
+                case 4:
+                    msj=new Vmensaje("El Nº de hijos es incorrecto.");
+                    TnHijos.setText("");
+                    break;
+                case 5:
+                    msj=new Vmensaje("La categoria es incorrecta.\n OPCIONES: D, E o F");
+                    Tcategoria.setText("");
+                    break;
+                case 6:
+                    msj=new Vmensaje("Horas de enero incorrectas.");
+                    Th1.setText("");
+                    break;
+                case 7:
+                    msj=new Vmensaje("Horas de febrero incorrectas.");
+                    Th2.setText("");
+                    break;
+                case 8:
+                    msj=new Vmensaje("Horas de marzo incorrectas.");
+                    Th3.setText("");
+                    break;
+                case 9:
+                    msj=new Vmensaje("Horas de abril incorrectas.");
+                    Th4.setText("");
+                    break;
+                case 10:
+                    msj=new Vmensaje("Horas de mayo incorrectas.");
+                    Th5.setText("");
+                    break;
+                case 11:
+                    msj=new Vmensaje("Horas de junio incorrectas.");
+                    Th6.setText("");
+                    break;
+                case 12:
+                    msj=new Vmensaje("Horas de julio incorrectas.");
+                    Th7.setText("");
+                    break;
+                case 13:
+                    msj=new Vmensaje("Horas de agosto incorrectas.");
+                    Th8.setText("");
+                    break;
+                case 14:
+                    msj=new Vmensaje("Horas de septiembre incorrectas.");
+                    Th9.setText("");
+                    break;
+                case 15:
+                    msj=new Vmensaje("Horas de octubre incorrectas.");
+                    Th10.setText("");
+                    break;
+                case 16:
+                    msj=new Vmensaje("Horas de noviembre incorrectas.");
+                    Th11.setText("");
+                    break;
+                case 17:
+                    msj=new Vmensaje("Horas de diciembre incorrectas.");
+                    Th12.setText("");
+                    break;
+                default:
+                    if(con.altaEmpleado(lab)){
+                        msj=new Vmensaje("El alta se ha realizado correctamente");
+                       this.dispose(); 
+                    }
+                    else{
+                        limpiarPantalla();
+                    }
+            }
+            
+        }
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -246,9 +368,8 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
                 Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
                         Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
                         Tcategoria.getText().toUpperCase(),Tpuesto.getText());
+                camposCorrectos(oficina);
                 
-                con.altaEmpleado(oficina);
-                this.dispose();
 
             }
             if(estado==1){
@@ -263,7 +384,7 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
                 Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText(),
                         Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
                         Tcategoria.getText().toUpperCase(),horas);
-                
+                camposCorrectos(laboral);
                 con.altaEmpleado(laboral);
                 this.dispose();
             }
