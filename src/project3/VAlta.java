@@ -185,8 +185,6 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
             Tpuesto.setText("");
         }
     }*/
- 
-    
     
     @Override
     public void actionPerformed(ActionEvent e) {
