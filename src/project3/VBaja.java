@@ -34,8 +34,9 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
     JLabel Lpuesto;
     JTextField Tpuesto;
     JButton baja;
-    JButton confirmar;
-    
+    JButton buscar;
+    JButton borrar;
+    Empleado empleado=null;
     BaseDatos con;
     
     private int estado=0; //controla si es oficina(0) o laboral(1)
@@ -49,7 +50,7 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         this.setLocation(800,400);
         this.setVisible(true);
         c.setBackground(Color.GREEN);
-        c.setLayout(new GridLayout(7,2,10,10));
+        c.setLayout(new GridLayout(8,2,10,10));
         
         Ldni=new JLabel("DNI: ");
         Tdni=new JTextField();
@@ -64,9 +65,13 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         Lpuesto=new JLabel("Puesto: ");
         Tpuesto=new JTextField();
         baja=new JButton("BAJA");
+        buscar=new JButton("BUSCAR");
+        borrar=new JButton("BORRAR");
         
         c.add(Ldni);
         c.add(Tdni);
+        c.add(buscar);
+        c.add(borrar);
         c.add(Lnombre);
         c.add(Tnombre);
         c.add(Lapellidos);
@@ -75,16 +80,16 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         c.add(TnHijos);
         c.add(Lcategoria);
         c.add(Tcategoria);
-        String cat=Tcategoria.getText().toUpperCase();
+        
         if(estado==0){
             c.add(Lpuesto);
             c.add(Tpuesto);
         }
-        if(estado==1){
-        }
         c.add(baja);
         
         baja.addActionListener(this);
+        buscar.addActionListener(this);
+        borrar.addActionListener(this);
         
         this.addWindowListener(this);
         
@@ -104,8 +109,14 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
      @Override
     public void actionPerformed(ActionEvent e) {
         Object control=e.getSource();
-        Empleado empleado=null;
         
+        if(control.equals(baja)){
+           VconfirmarBaja confirmar=new VconfirmarBaja(empleado, con, this);
+        }
+        if(control.equals(borrar)){
+            limpiarPantalla();
+        }
+        if(control.equals(buscar)){
             String dni=Tdni.getText();
             empleado=con.buscarEmpleado(dni, estado);
             if(empleado!=null){
@@ -117,11 +128,9 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
                     Oficinas oficinas=(Oficinas) empleado;
                     Tpuesto.setText(oficinas.getPuesto());
                 }
-                VconfirmarBaja confirmar=new VconfirmarBaja(empleado, con, this);
-                
             }
-    }
-
+         }
+     }
     @Override
     public void windowOpened(WindowEvent e) {
     }

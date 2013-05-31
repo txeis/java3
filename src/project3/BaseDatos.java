@@ -205,21 +205,24 @@ public class BaseDatos extends JFrame{
         
     }*/
     
-    public void bajaEmpleado(Empleado empleado){  
+    public boolean bajaEmpleado(Empleado empleado){  
         try {
             if(empleado instanceof Laboral){
                 System.out.println("entro a borrar de laboral");
                 st.executeUpdate("DELETE from laboral where dni LIKE '"+empleado.getDni()+"';");
+                return true;
             }
             if(empleado instanceof Oficinas){
                 System.out.println("entro a borrar de oficina");
                 st.executeUpdate("DELETE from oficinas where dni LIKE '"+empleado.getDni()+"';");
+                return true;
             }
         } 
         catch (SQLException ex){
                 Vmensaje msj=new Vmensaje("ERROR: "+ex);
                 System.out.println(("ERROR: "+ex));
         }
+        return false;
     } 
     
     

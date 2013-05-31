@@ -24,7 +24,6 @@ public class VconfirmarBaja extends JFrame implements ActionListener{
     JButton confirmar;
     Empleado empleado;
     BaseDatos con;
-    private Boolean borrado;
     VBaja vBaja;
     VconfirmarBaja(Empleado empleado, BaseDatos con, VBaja vBaja) {
         this.empleado=empleado;
@@ -32,7 +31,7 @@ public class VconfirmarBaja extends JFrame implements ActionListener{
         this.vBaja=vBaja;
         c=(JPanel)this.getContentPane();     
         this.setTitle("ALERTA");
-        this.setSize(500, 100);
+        this.setSize(600, 100);
         this.setLocation(600,100);
         c.setLayout(new GridLayout(1, 1, 20,20));
         this.setVisible(true);
@@ -48,22 +47,19 @@ public class VconfirmarBaja extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
             if(empleado!=null){
-                con.bajaEmpleado(empleado);
-                borrado=true;
+                System.out.println("nivl1");
+                if(con.bajaEmpleado(empleado)){
+                    System.out.println("nivl2");
+                    this.dispose();
+                    vBaja.dispose();
+                    Vmensaje msj=new Vmensaje("Baja realizada correctamente.");
+                }
             }
-            else{
-                borrado=false;
-            }
-        this.dispose();
-        vBaja.dispose();
+        
     }
 
-    /**
-     * @return the borrado
-     */
-    public Boolean getBorrado() {
-        return borrado;
-    }
+    
+    
 }
 
     
