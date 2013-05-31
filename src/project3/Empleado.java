@@ -111,8 +111,8 @@ public abstract class Empleado {
     }
     public int empCorrecto(){
         if(!dniCorrecto()){return 1;}
-        if(nom.length()<0||nom.length()>50 || isNumeric(nom)){return 2;}
-        if(ape.length()<0||ape.length()>100 || isNumeric(ape)){return 3;}
+        if(nom.length()<=0||nom.length()>50 || isNumeric(nom)){return 2;}
+        if(ape.length()<=0||ape.length()>100 || isNumeric(ape)){return 3;}
         if(nHij<0||nHij>100){return 4;}
         if(categoria.length()!=1 || isNumeric(categoria) || (categoria.charAt(0)<'A' || categoria.charAt(0)>'F')){return 5;}
         return 0;
