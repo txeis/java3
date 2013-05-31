@@ -118,18 +118,20 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         }
         if(control.equals(buscar)){
             String dni=Tdni.getText();
-            empleado=con.buscarEmpleado(dni, estado);
-            if(empleado!=null){
-                Tnombre.setText(empleado.getNom());
-                Tapellidos.setText(empleado.getApe());
-                TnHijos.setText(Integer.toString(empleado.getnHij()));
-                Tcategoria.setText(empleado.getCategoria());
-                if(estado==0){
-                    Oficinas oficinas=(Oficinas) empleado;
-                    Tpuesto.setText(oficinas.getPuesto());
+            if(empleado.dniCorrecto()){
+                empleado=con.buscarEmpleado(dni, estado);
+                if(empleado!=null){
+                    Tnombre.setText(empleado.getNom());
+                    Tapellidos.setText(empleado.getApe());
+                    TnHijos.setText(Integer.toString(empleado.getnHij()));
+                    Tcategoria.setText(empleado.getCategoria());
+                    if(estado==0){
+                        Oficinas oficinas=(Oficinas) empleado;
+                        Tpuesto.setText(oficinas.getPuesto());
+                    }
                 }
             }
-         }
+        }
      }
     @Override
     public void windowOpened(WindowEvent e) {
