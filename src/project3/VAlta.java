@@ -27,9 +27,32 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
     JTextField Tcategoria;
     JLabel Lpuesto;
     JTextField Tpuesto;
-    JLabel Lhoras;
-    JTextField Thoras;
     JButton alta;
+    
+    JLabel Lh1;
+    JTextField Th1;
+    JLabel Lh2;
+    JTextField Th2;
+    JLabel Lh3;
+    JTextField Th3;
+    JLabel Lh4;
+    JTextField Th4;
+    JLabel Lh5;
+    JTextField Th5;
+    JLabel Lh6;
+    JTextField Th6;
+    JLabel Lh7;
+    JTextField Th7;
+    JLabel Lh8;
+    JTextField Th8;
+    JLabel Lh9;
+    JTextField Th9;
+    JLabel Lh10;
+    JTextField Th10;
+    JLabel Lh11;
+    JTextField Th11;
+    JLabel Lh12;
+    JTextField Th12;
 
     private int estado=0; //controla si es oficina(0) o laboral(1)
     
@@ -94,8 +117,55 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         
     }
     public void addHoras(){
-        Lhoras=new JLabel("Horas trabajadas: ");
-        Thoras=new JTextField();
+        Lh1=new JLabel("h enero");
+        Th1=new JTextField();
+        Lh2=new JLabel("h enero");
+        Th2=new JTextField();
+        Lh3=new JLabel("h enero");
+        Th3=new JTextField();
+        Lh4=new JLabel("h enero");
+        Th4=new JTextField();
+        Lh5=new JLabel("h enero");
+        Th5=new JTextField();
+        Lh6=new JLabel("h enero");
+        Th6=new JTextField();
+        Lh7=new JLabel("h enero");
+        Th7=new JTextField();
+        Lh8=new JLabel("h enero");
+        Th8=new JTextField();
+        Lh9=new JLabel("h enero");
+        Th9=new JTextField();
+        Lh10=new JLabel("h enero");
+        Th10=new JTextField();
+        Lh11=new JLabel("h enero");
+        Th11=new JTextField();
+        Lh12=new JLabel("h enero");
+        Th12=new JTextField();
+        
+        c.add(Lh1);
+        c.add(Th1);
+        c.add(Lh2);
+        c.add(Th2);
+        c.add(Lh3);
+        c.add(Th3);
+        c.add(Lh4);
+        c.add(Th4);
+        c.add(Lh5);
+        c.add(Th5);
+        c.add(Lh6);
+        c.add(Th6);
+        c.add(Lh7);
+        c.add(Th7);
+        c.add(Lh8);
+        c.add(Th8);
+        c.add(Lh9);
+        c.add(Th9);
+        c.add(Lh10);
+        c.add(Th10);
+        c.add(Lh11);
+        c.add(Th11);
+        c.add(Lh12);
+        c.add(Th12);
     }
     
     /**
