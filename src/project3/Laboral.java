@@ -15,6 +15,15 @@ public class Laboral extends Empleado{
         super(dni,nom,ape,nHij,categoria);
         this.horas=horas;
     }
+    /**
+     * Constructor para usar en el listado
+     * @param dni
+     * @param nom
+     * @param ape 
+     */
+    public Laboral(String dni,String nom,String ape){
+        super(dni,nom,ape);
+    }
     
     public int labCorrecto(){
         int m=empCorrecto();

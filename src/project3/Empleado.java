@@ -26,6 +26,17 @@ public abstract class Empleado {
         this.categoria=categoria;
     }
     /**
+     * Constructor para usar en el listado
+     * @param dni
+     * @param nom
+     * @param ape 
+     */
+    public Empleado(String dni,String nom,String ape){
+        this.dni=dni;
+        this.nom=nom;
+        this.ape=ape;
+    }
+    /**
      * @return the dni
      */
     public String getDni() {
@@ -108,6 +119,11 @@ public abstract class Empleado {
             return false;
         }
         return true;
+    }
+    
+    public String[] muestraEmp(){
+        String[] arrayEmp={dni,nom,ape};
+        return arrayEmp;
     }
     public int empCorrecto(){
         if(!dniCorrecto()){return 1;}

@@ -224,6 +224,23 @@ public class BaseDatos extends JFrame{
         }
         return false;
     } 
+    public void listadoEmp(){   
+    String[] data=new String[3];
+    try {
+            st=con.createStatement();
+            rs=st.executeQuery("SELECT l.dni, l.nombre, l.apellidos, o.dni, "
+                    + "o.nombre, o.apellidos  FROM laboral l, oficinas o;");
+            Vlistado list=new Vlistado();
+            //insertamos el contenido de las columnas
+            while(rs.next()){
+               Empleado emp=new Laboral(rs.getString(1),rs.getString(2),rs.getString(3));
+               list.muestraEmp(emp);
+            }
+            
+        } catch (SQLException ex){
+            System.out.println ("ERROR: "+ex);
+        }    
+    }
     
     
     

@@ -61,6 +61,14 @@ public class VPersonal extends JFrame implements ActionListener, WindowListener{
             estado=1;
             VMenu vLaboral= new VMenu("LABORAL", con, estado);
         }
+        if(control.equals(listado)){
+            try{
+                con.listadoEmp();
+            }
+            catch(Exception error){
+                Vmensaje msj=new Vmensaje("Error al acceder a la lista.");
+            }
+        }
     
     }
 
