@@ -18,7 +18,7 @@ public class Laboral extends Empleado{
     
     public int labCorrecto(){
         int m=empCorrecto();
-        if(m!=0){
+        if(m==0){
             for(int n=0;n<horas.length;n++){
                 if(horas[n]<0 || horas[n]>=100){return n+6;}
             }
