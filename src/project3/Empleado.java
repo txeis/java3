@@ -4,6 +4,8 @@
  */
 package project3;
 
+import java.io.IOException;
+
 /**
  *
  * @author Alumno
@@ -92,11 +94,46 @@ public abstract class Empleado {
     public void setCategoría(String categoria) {
         this.categoria = categoria;
     }
-    
-    public void altaEmp(){
-        System.out.println("ALTA DE EMPLEADO:  ");
-        System.out.println("");
+    public boolean dniCorrecto(){
+        char c;
+        if(dni.length()!=9 ){
+            return false;
+        }
+        for(int n=0;n<8;n++){
+            if(numLetra(dni.charAt(n))!=1){
+                return false;
+            }
+        }
+        if(numLetra(dni.charAt(8))!=2){
+            return false;
+        }
+        return true;
+    }
+    public int empCorrecto(){
+        if(!dniCorrecto()){return 1;}
+        if(nom.length()<0||nom.length()>50 || isNumeric(nom)){return 2;}
+        if(ape.length()<0||ape.length()>100 || isNumeric(ape)){return 3;}
+        if(nHij<0||nHij>100){return 4;}
+        if(categoria.length()!=1 || isNumeric(categoria) || (categoria.charAt(0)<'A' || categoria.charAt(0)>'F')){return 5;}
+        return 0;
     }
     
-            
+   protected static boolean isNumeric(String cadena){
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException e){
+            return false;
+        }
+    }    
+   protected static int numLetra(char c){
+        if((c>='a' && c<='z')||(c>='A' && c<='Z')){
+            return 2;
+        }
+        if(c>='0' && c<='9'){
+            return 1;
+        }
+        return 0;
+    }
 }
+    

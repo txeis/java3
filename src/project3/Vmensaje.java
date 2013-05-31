@@ -12,12 +12,12 @@ import javax.swing.*;
  *
  * @author Alumno
  */
-public class Mensaje extends JFrame implements ActionListener, WindowListener{
+public class Vmensaje extends JFrame implements ActionListener, WindowListener{
     JLabel mnsj;
     JPanel c; 
     JButton cerrar;
     
-    Mensaje(String mensaje) {
+    Vmensaje(String mensaje) {
         c=(JPanel)this.getContentPane();     
         this.setTitle("ALERTA");
         this.setSize(500, 100);

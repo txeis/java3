@@ -10,7 +10,7 @@ import javax.swing.*;
 
 /**
  *
- * @author Alumno
+ * @author Idoia
  */
 public class VAlta  extends JFrame implements ActionListener, WindowListener{
     
@@ -28,6 +28,7 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
     JLabel Lpuesto;
     JTextField Tpuesto;
     JButton alta;
+    JButton borrar;
     
     JLabel Lh1;
     JTextField Th1;
@@ -53,6 +54,7 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
     JTextField Th11;
     JLabel Lh12;
     JTextField Th12;
+    
 
     private int estado=0; //controla si es oficina(0) o laboral(1)
     
@@ -64,23 +66,28 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         c=(JPanel)this.getContentPane();
         
         this.setTitle(cadena);
-        this.setSize(400,400);
+        this.setSize(400,600);
         this.setLocation(800,400);
         this.setVisible(true);
         c.setBackground(Color.GREEN);
-        c.setLayout(new GridLayout(7,2,10,10));
         
-        addComunes();
         alta=new JButton("ALTA");
+        borrar=new JButton("BORRAR");
+        
         if(estado==0){
+            c.setLayout(new GridLayout(7,2,10,10));
+            addComunes();
             addPuesto();
         }
         if(estado==1){
+            c.setLayout(new GridLayout(18,2,10,10));
+            addComunes();
             addHoras();
         }
         c.add(alta);
-        
+        c.add(borrar);
         alta.addActionListener(this);
+        borrar.addActionListener(this);
         this.addWindowListener(this);
         System.out.println(estado);
     }
@@ -119,27 +126,27 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
     public void addHoras(){
         Lh1=new JLabel("h enero");
         Th1=new JTextField();
-        Lh2=new JLabel("h enero");
+        Lh2=new JLabel("h febrero");
         Th2=new JTextField();
-        Lh3=new JLabel("h enero");
+        Lh3=new JLabel("h marzo");
         Th3=new JTextField();
-        Lh4=new JLabel("h enero");
+        Lh4=new JLabel("h abril");
         Th4=new JTextField();
-        Lh5=new JLabel("h enero");
+        Lh5=new JLabel("h mayo");
         Th5=new JTextField();
-        Lh6=new JLabel("h enero");
+        Lh6=new JLabel("h junio");
         Th6=new JTextField();
-        Lh7=new JLabel("h enero");
+        Lh7=new JLabel("h julio");
         Th7=new JTextField();
-        Lh8=new JLabel("h enero");
+        Lh8=new JLabel("h agosto");
         Th8=new JTextField();
-        Lh9=new JLabel("h enero");
+        Lh9=new JLabel("h septiembre");
         Th9=new JTextField();
-        Lh10=new JLabel("h enero");
+        Lh10=new JLabel("h octubre");
         Th10=new JTextField();
-        Lh11=new JLabel("h enero");
+        Lh11=new JLabel("h noviembre");
         Th11=new JTextField();
-        Lh12=new JLabel("h enero");
+        Lh12=new JLabel("h diciembre");
         Th12=new JTextField();
         
         c.add(Lh1);
@@ -175,7 +182,7 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         return estado;
     }
     
-    /*public  void limpiarPantalla(){
+    public  void limpiarPantalla(){
         Tdni.setText("");
         Tnombre.setText("");
         Tapellidos.setText("");
@@ -184,28 +191,86 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         if(estado==0){
             Tpuesto.setText("");
         }
-    }*/
-    
+        if(estado==1){
+            Th1.setText("");
+            Th2.setText("");
+            Th3.setText("");
+            Th4.setText("");
+            Th5.setText("");
+            Th6.setText("");
+            Th7.setText("");
+            Th8.setText("");
+            Th9.setText("");
+            Th10.setText("");
+            Th11.setText("");
+            Th12.setText("");
+        }
+    }
+    public void comprobarCamposNum(){
+            try{
+                Integer.parseInt(TnHijos.getText());
+            }
+            catch(NumberFormatException e){
+                Vmensaje msj=new Vmensaje("el Nº de hijos ha de ser un número");
+                TnHijos.setText("");
+            }
+        if(estado==1){
+            try{
+                Integer.parseInt(Th1.getText());
+                Integer.parseInt(Th2.getText());
+                Integer.parseInt(Th3.getText());
+                Integer.parseInt(Th4.getText());
+                Integer.parseInt(Th5.getText());
+                Integer.parseInt(Th6.getText());
+                Integer.parseInt(Th7.getText());
+                Integer.parseInt(Th8.getText());
+                Integer.parseInt(Th9.getText());
+                Integer.parseInt(Th10.getText());
+                Integer.parseInt(Th11.getText());
+                Integer.parseInt(Th12.getText());
+            }
+            catch(NumberFormatException e){
+                Vmensaje msj=new Vmensaje("ERROR: hay letras en los campos de horas");
+            }
+        }
+    }
+    public void camposCorrectos(){
+        
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-        if(estado==0){
-            Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
-                    Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
-                    Tcategoria.getText().toUpperCase(),Tpuesto.getText());
-            //limpiarPantalla();
-            con.altaEmpleado(oficina);
-            this.dispose();
-            
+        Object control=e.getSource();
+            if(control.equals(alta)){
+            comprobarCamposNum();    
+            if(estado==0){
+                Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
+                        Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                        Tcategoria.getText().toUpperCase(),Tpuesto.getText());
+                
+                con.altaEmpleado(oficina);
+                this.dispose();
+
+            }
+            if(estado==1){
+                comprobarCamposNum();
+                int [] horas={Integer.parseInt(Th1.getText()),Integer.parseInt(Th2.getText()),
+                Integer.parseInt(Th3.getText()),Integer.parseInt(Th4.getText()),
+                Integer.parseInt(Th5.getText()),Integer.parseInt(Th6.getText()),
+                Integer.parseInt(Th7.getText()),Integer.parseInt(Th8.getText()),
+                Integer.parseInt(Th9.getText()),Integer.parseInt(Th10.getText()),
+                Integer.parseInt(Th11.getText()),Integer.parseInt(Th12.getText())};
+
+                Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText(),
+                        Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                        Tcategoria.getText().toUpperCase(),horas);
+                
+                con.altaEmpleado(laboral);
+                this.dispose();
+            }
         }
-        if(estado==1){
-            Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText(),
-                    Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
-                    Tcategoria.getText().toUpperCase());
-            //limpiarPantalla();
-            con.altaEmpleado(laboral);
-            this.dispose();
-        }
+            if(control.equals(borrar)){
+                limpiarPantalla();
+            }
     }
     
     

@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  *
  * @author idoia
  */
-public class ConfirmarBaja extends JFrame implements ActionListener{
+public class VconfirmarBaja extends JFrame implements ActionListener{
     JLabel mnsj;
     JPanel c; 
     JButton confirmar;
@@ -26,7 +26,7 @@ public class ConfirmarBaja extends JFrame implements ActionListener{
     BaseDatos con;
     private Boolean borrado;
     VBaja vBaja;
-    ConfirmarBaja(Empleado empleado, BaseDatos con, VBaja vBaja) {
+    VconfirmarBaja(Empleado empleado, BaseDatos con, VBaja vBaja) {
         this.empleado=empleado;
         this.con=con;
         this.vBaja=vBaja;

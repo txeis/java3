@@ -117,7 +117,7 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
                     Oficinas oficinas=(Oficinas) empleado;
                     Tpuesto.setText(oficinas.getPuesto());
                 }
-                ConfirmarBaja confirmar=new ConfirmarBaja(empleado, con, this);
+                VconfirmarBaja confirmar=new VconfirmarBaja(empleado, con, this);
                 
             }
     }

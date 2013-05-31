@@ -30,7 +30,7 @@ public class BaseDatos extends JFrame{
             
         } 
         catch (SQLException ex){
-            Mensaje msj=new Mensaje("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
             System.out.println(("ERROR: "+ex));
             
         } 
@@ -45,7 +45,7 @@ public class BaseDatos extends JFrame{
                 }
             }
             catch(SQLException ex){
-                Mensaje m=new Mensaje("error:  "+ex);
+                Vmensaje m=new Vmensaje("error:  "+ex);
                 System.out.println(("ERROR: "+ex));
             } 
     }
@@ -62,7 +62,7 @@ public class BaseDatos extends JFrame{
                     return oficinas;
                 }
                 else{
-                    Mensaje msj=new Mensaje("No existe el dni.");
+                    Vmensaje msj=new Vmensaje("No existe el dni.");
                 }
             }
             if(estado==1){
@@ -73,7 +73,7 @@ public class BaseDatos extends JFrame{
                     return laboral;
                 }
                 else{
-                    Mensaje msj=new Mensaje("No existe el dni.");
+                    Vmensaje msj=new Vmensaje("No existe el dni.");
                 }
             }
         }
@@ -94,7 +94,7 @@ public class BaseDatos extends JFrame{
                 rs=st.executeQuery("Select dni from laboral where dni LIKE '"+empleado.getDni()+"';");
             }
             else{
-                Mensaje msj=new Mensaje("No se ha recivido el objeto correcto.");
+                Vmensaje msj=new Vmensaje("No se ha recivido el objeto correcto.");
             }
             if(rs.next()){
                 return true;
@@ -122,7 +122,7 @@ public class BaseDatos extends JFrame{
             System.out.println("conexion cerrada");
         }
         catch (SQLException ex){
-            Mensaje msj=new Mensaje("Error cerrando la conexión");
+            Vmensaje msj=new Vmensaje("Error cerrando la conexión");
             System.out.println(("ERROR: "+ex));
         }   
     }
@@ -152,10 +152,10 @@ public class BaseDatos extends JFrame{
                 }
             }
             else{
-                Mensaje msj=new Mensaje("Ya existe un empleado con ese dni.");
+                Vmensaje msj=new Vmensaje("Ya existe un empleado con ese dni.");
             }
         } catch (SQLException ex){
-           Mensaje msj=new Mensaje("ERROR: "+ex);
+           Vmensaje msj=new Vmensaje("ERROR: "+ex);
            System.out.println(("ERROR: "+ex));
         }
     } 
@@ -189,7 +189,7 @@ public class BaseDatos extends JFrame{
             }
         } 
         catch (SQLException ex){
-                Mensaje msj=new Mensaje("ERROR: "+ex);
+                Vmensaje msj=new Vmensaje("ERROR: "+ex);
                 System.out.println(("ERROR: "+ex));
         }
     } 

@@ -15,7 +15,16 @@ public class Oficinas extends Empleado{
         super(dni,nom,ape,nHij,categoria);
         this.puesto=puesto;
     }
-    
+    public int ofiCorrecto(){
+        int m=empCorrecto();
+        if(m!=0){
+            if(puesto.length()<0||puesto.length()>100 || isNumeric(puesto)){return 6;}
+        }
+        else{
+            return m;
+        }
+        return 0;
+    }
     
     /**
      * @return the puesto
