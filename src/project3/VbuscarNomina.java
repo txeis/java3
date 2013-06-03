@@ -25,6 +25,8 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
      JButton calcular;
      JButton borrar;
      String cadena;
+     Empleado empleado=null;
+     
      public VbuscarNomina(String cadena, BaseDatos con,int estado){
         this.cadena=cadena;
         this.estado=estado;
@@ -82,8 +84,18 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
         }
         if(control.equals(calcular)){
             String dni=Tdni.getText();
-            if(Empleado.dniCorrecto(dni) && comprobarMes()){
+            if(Empleado.dniCorrecto(dni)){
+                empleado=con.buscarEmpleado(dni, estado);
+                if(empleado!=null){
+                    if(con.existe(empleado)){
+                        comprobarMes();
+                    }
+                }
+                else{
+                    Tdni.setText("");
+                }
                 Vnomina nomina=new Vnomina(cadena,con,estado);
+                this.dispose();
             }
             
             
