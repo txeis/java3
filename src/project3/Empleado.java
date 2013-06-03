@@ -105,7 +105,8 @@ public abstract class Empleado {
     public void setCategoría(String categoria) {
         this.categoria = categoria;
     }
-    public boolean dniCorrecto(){
+    public boolean dniCorrecto(String dni){
+        System.out.println("enro en dni correcto: "+ dni);
         char c;
         if(dni.length()!=9 ){
             return false;
@@ -126,7 +127,7 @@ public abstract class Empleado {
         return arrayEmp;
     }
     public int empCorrecto(){
-        if(!dniCorrecto()){return 1;}
+        if(!dniCorrecto(dni)){return 1;}
         if(nom.length()<=0||nom.length()>50 || isNumeric(nom)){return 2;}
         if(ape.length()<=0||ape.length()>100 || isNumeric(ape)){return 3;}
         if(nHij<0||nHij>100){return 4;}

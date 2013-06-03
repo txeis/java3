@@ -31,6 +31,8 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
     JButton cerrar;
     JButton guardar;
     
+    String dni;
+    
     JLabel Lh1;
     JTextField Th1;
     JLabel Lh2;
@@ -55,7 +57,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
     JTextField Th11;
     JLabel Lh12;
     JTextField Th12;
-    Empleado empleado=null;
+    Empleado empleado;
 
     private int estado=0; //controla si es oficina(0) o laboral(1)
     
@@ -274,7 +276,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
                     Tpuesto.setText("");
                     break;
                 default:
-                    if(con.altaEmpleado(of)){
+                    if(con.modifEmp(of)){
                         msj=new Vmensaje("La modificación se ha realizado correctamente");
                        this.dispose(); 
                     }
@@ -357,7 +359,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
                     Th12.setText("");
                     break;
                 default:
-                    if(con.altaEmpleado(lab)){
+                    if(con.modifEmp(lab)){
                         msj=new Vmensaje("La modificación se ha realizado correctamente");
                         this.dispose(); 
                     }
@@ -372,6 +374,10 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
     public void actionPerformed(ActionEvent e) {
         Object control=e.getSource();
             if(control.equals(guardar)){
+                if(!dni.equals(Tdni.getText())){
+                    Vmensaje msj=new Vmensaje("El dni no puede cambiarse.");
+                    Tdni.setText(dni);
+                }
                 comprobarCamposNum();    
                 if(estado==0){
                     Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
@@ -403,8 +409,8 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
             this.dispose();
         }
         if(control.equals(buscar)){
-            String dni=Tdni.getText();
-            if(empleado.dniCorrecto()){
+            dni=Tdni.getText();
+            if(empleado.dniCorrecto(dni)){
                 empleado=con.buscarEmpleado(dni, estado);
                 if(empleado!=null){
                     Tnombre.setText(empleado.getNom());
