@@ -90,6 +90,44 @@ public class BaseDatos extends JFrame{
         }  
         return null;
     }
+    
+    /**
+     * buscar parte del apellido
+     */
+    
+    public Empleado buscarApellido(String ape, int estado){
+        
+     try{
+            if(estado==0){
+                rs=st.executeQuery("Select dni,nombre,apellidos from oficinas where apellidos LIKE '%"+ape+"%';");
+                if(rs.next()){
+                    Oficinas oficinas=new Oficinas(rs.getString(1),rs.getString(2),
+                            rs.getString(3));
+                    return oficinas;
+                }
+                else{
+                    Vmensaje msj=new Vmensaje("No se encuentra el apellido.");
+                }
+            }
+            if(estado==1){
+                rs=st.executeQuery("Select dni,nombre,apellidos from laboral where apellidos LIKE '%"+ape+"%';");
+                
+                if(rs.next()){
+                    Laboral laboral=new Laboral(rs.getString(1),rs.getString(2),
+                            rs.getString(3));
+                    return laboral;
+                }
+                else{
+                    Vmensaje msj=new Vmensaje("No se encuentra el apellido.");
+                }
+            }
+        }
+        catch (SQLException ex){
+            System.out.println ("ERROR: "+ex);
+        }  
+        return null;
+    }
+    
     /**
      * Controla si el empleado ya existe en la tabla
      */
