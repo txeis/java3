@@ -410,7 +410,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
         }
         if(control.equals(buscar)){
             dni=Tdni.getText();
-            if(empleado.dniCorrecto(dni)){
+            if(Empleado.dniCorrecto(dni)){
                 empleado=con.buscarEmpleado(dni, estado);
                 if(empleado!=null){
                     Tnombre.setText(empleado.getNom());

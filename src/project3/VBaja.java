@@ -36,7 +36,7 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
     JButton baja;
     JButton buscar;
     JButton borrar;
-    Empleado empleado;;
+    Empleado empleado=null;
     BaseDatos con;
     
     private int estado=0; //controla si es oficina(0) o laboral(1)
@@ -119,7 +119,8 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         if(control.equals(buscar)){
             String dni=Tdni.getText();
             System.out.println(dni);
-            if(empleado.dniCorrecto(dni)){
+            if(Empleado.dniCorrecto(dni)){
+                System.out.println("correcto");
                 empleado=con.buscarEmpleado(dni, estado);
                 if(empleado!=null){
                     Tnombre.setText(empleado.getNom());

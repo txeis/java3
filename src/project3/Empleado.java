@@ -105,7 +105,7 @@ public abstract class Empleado {
     public void setCategoría(String categoria) {
         this.categoria = categoria;
     }
-    public boolean dniCorrecto(String dni){
+    public static boolean dniCorrecto(String dni){
         System.out.println("entro en dni correcto: "+ dni);
         char c;
         if(dni.length()!=9 ){
