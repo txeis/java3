@@ -326,20 +326,23 @@ public class BaseDatos{
             
             while(rs.next()){
                Empleado emp=new Laboral(rs.getString(1),rs.getString(2),rs.getString(3));
-               
                ts.add(emp);
             }
-            Empleado emp;
+            visualiza(ts);
+            
+            
+        } catch (SQLException ex){
+            System.out.println ("ERROR: "+ex);
+        }    
+    }
+    public void visualiza(TreeSet ts){
+        Empleado emp;
             Iterator it=ts.iterator();
             Vlistado list=new Vlistado();
             while(it.hasNext()){
                 emp=(Empleado)it.next();
                 list.muestraEmp(emp);
             }
-            
-        } catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
-        }    
     }
     
     
