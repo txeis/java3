@@ -126,29 +126,12 @@ public class BaseDatos{
             System.out.println ("ERROR: "+ex);
         }  
     }
-    public int numHijos(Empleado emp){
-        try{
-            if(emp instanceof Oficinas){
-                rs=st.executeQuery("Select hijos from oficinas where dni LIKE '"+emp.getDni()+"';");
-                int hijos=rs.getInt(1);
-                return hijos;
-            }
-            if(emp instanceof Laboral){
-                rs=st.executeQuery("Select hijos from laboral where dni LIKE '"+emp.getDni()+"';");
-                int hijos=rs.getInt(1);
-                return hijos;
-            }
-        }
-        catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
-            return 0;
-        }
-        return 0;
-    }
+    
     public int hMes(Empleado emp,String mes){
         try{
             rs=st.executeQuery("Select "+mes+" from laboral where dni LIKE '"+emp.getDni()+"';");
             int hMes=rs.getInt(1);
+            System.out.println(hMes);
             return hMes;
         }
         catch (SQLException ex){
@@ -160,6 +143,7 @@ public class BaseDatos{
         try{
             rs=st.executeQuery("Select salarioBase from categoria where codigo LIKE '"+cat+"';");
             int dinCat=rs.getInt(1);
+            System.out.println(dinCat);
             return dinCat;
         }
         catch (SQLException ex){

@@ -42,7 +42,7 @@ public class Vnomina extends JFrame{
         Nomina nomina=new Nomina(con,estado,emp,mes);
         nomina.calculoNomina();
         
-        mesHoras=new JLabel("Nómina del mes de: "+nomina.getMesN()+" Horas realizadas: "+nomina.gethMes());
+        mesHoras=new JLabel("Nómina del mes de "+nomina.getMesN()+"     Horas realizadas: "+nomina.gethMes());
         nombre=new JLabel("Trabajador: "+emp.getNom()+" "+emp.getApe()+" con dni: "+emp.getDni());
         categoria=new JLabel("Categoría: "+emp.getCategoria()+" --> "+nomina.getDinCat());
         hijos=new JLabel("Número de hijos para descuento de IRPF: "+emp.getnHij());

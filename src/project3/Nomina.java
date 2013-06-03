@@ -34,15 +34,15 @@ public class Nomina {
     }
    
     public void recogeDatos(){
-        String cat=getEmp().getCategoria();
+        String cat=emp.getCategoria();
         setDinCat(getCon().dineroCat(cat));
-        if(getEstado()==0){
+        if(estado==0){
             setBruto(getDinCat());
         }
-        if(getEstado()==1){
+        if(estado==1){
             tablaMes();
-            sethMes(getCon().hMes(getEmp(), getMesL()));
-            setBruto(getDinCat() * gethMes());
+            sethMes(con.hMes(emp, mesL));
+            setBruto(dinCat * hMes);
         }
     }
     
