@@ -5,6 +5,7 @@
 package project3;
 
 import java.sql.*;
+import java.util.LinkedList;
 import javax.swing.*;
 
 /**
@@ -228,13 +229,16 @@ public class BaseDatos extends JFrame{
     String[] data=new String[3];
     try {
             st=con.createStatement();
+            
             rs=st.executeQuery("SELECT l.dni, l.nombre, l.apellidos, o.dni, "
                     + "o.nombre, o.apellidos  FROM laboral l, oficinas o;");
             Vlistado list=new Vlistado();
             //insertamos el contenido de las columnas
+            LinkedList<String> lk=new LinkedList();
             while(rs.next()){
                Empleado emp=new Laboral(rs.getString(1),rs.getString(2),rs.getString(3));
                list.muestraEmp(emp);
+               lk.add(rs.getString(2));
             }
             
         } catch (SQLException ex){
