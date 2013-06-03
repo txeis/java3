@@ -40,16 +40,16 @@ public class Vnomina extends JFrame{
         
         
         Nomina nomina=new Nomina(con,estado,emp,mes);
+        nomina.calculoNomina();
         
-        
-        mesHoras=new JLabel("");
-        nombre=new JLabel("");
-        categoria=new JLabel("");
-        hijos=new JLabel("");
-        SB=new JLabel("");
-        IRPF=new JLabel("");
-        extra=new JLabel("");
-        SN=new JLabel("");
+        mesHoras=new JLabel("Nómina del mes de: "+nomina.getMesN()+" Horas realizadas: "+nomina.gethMes());
+        nombre=new JLabel("Trabajador: "+emp.getNom()+" "+emp.getApe()+" con dni: "+emp.getDni());
+        categoria=new JLabel("Categoría: "+emp.getCategoria()+" --> "+nomina.getDinCat());
+        hijos=new JLabel("Número de hijos para descuento de IRPF: "+emp.getnHij());
+        SB=new JLabel("Salario bruto: "+nomina.getBruto());
+        IRPF=new JLabel("IRPF a descontar: "+nomina.getIrpf());
+        extra=new JLabel("Pagas extras: "+nomina.getExtra());
+        SN=new JLabel("Salario neto total: "+nomina.getNeto());
         
         c.add(mesHoras);
         c.add(nombre);

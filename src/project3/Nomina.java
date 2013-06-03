@@ -9,15 +9,15 @@ package project3;
  * @author Alumno
  */
 public class Nomina {
-    private double bruto, neto, irpf, irpfHijos, extra, brutoMirpf;
+    private double bruto=0, neto=0, irpf=0, irpfHijos=0, extra=0, brutoMirpf=0;
     
-    private int hMes, dinCat;
+    private int hMes=40, dinCat;
     private String mesL, mesN;
     
-    BaseDatos con;
-    int estado;
-    Empleado emp;
-    int mes;
+    private BaseDatos con;
+    private int estado;
+    private Empleado emp;
+    private int mes;
     
     public Nomina(BaseDatos con,int estado, Empleado emp, int mes){
         this.con=con;
@@ -25,48 +25,57 @@ public class Nomina {
         this.emp=emp;
         this.mes=mes;
     }
-    
+    public void calculoNomina(){
+        recogeDatos();
+        calculoIRPF();
+        pagasExtraordinarias();
+        calculoNeto();
+        muestraMes();
+    }
    
     public void recogeDatos(){
-        String cat=emp.getCategoria();
-        dinCat=con.dineroCat(cat);
-        if(estado==0){
-            bruto=dinCat;
+        String cat=getEmp().getCategoria();
+        setDinCat(getCon().dineroCat(cat));
+        if(getEstado()==0){
+            setBruto(getDinCat());
         }
-        if(estado==1){
+        if(getEstado()==1){
             tablaMes();
-        hMes=con.hMes(emp,mesL);
-            bruto=dinCat*hMes;
+            sethMes(getCon().hMes(getEmp(), getMesL()));
+            setBruto(getDinCat() * gethMes());
         }
     }
     
     public  void calculoIRPF(){
-        if(bruto<600){
-            irpf=bruto*0.01;
+        if(getBruto()<600){
+            setIrpf(getBruto() * 0.01);
         }
-        else if(bruto>=600 && bruto<=1200){
-            irpf=bruto*0.15;
+        else if(getBruto()>=600 && getBruto()<=1200){
+            setIrpf(getBruto() * 0.15);
         }
         else{
-            irpf=bruto*0.25;
+            setIrpf(getBruto() * 0.25);
         }
-        int numHijos=emp.getnHij();
+        int numHijos=getEmp().getnHij();
         if(numHijos>0){
-            irpf-=(irpf*0.04);
+            setIrpf(getIrpf() - (getIrpf() * 0.04));
         }
-        irpf=((int)(irpf*100))/100; //dejamos dos decimales
-        brutoMirpf=bruto-irpf;
+        setIrpf(((int) (getIrpf() * 100)) / 100); //dejamos dos decimales
+        setBrutoMirpf(getBruto() - getIrpf());
     }
     public void pagasExtraordinarias(){
         if(mes==6 || mes==12){
-            extra=brutoMirpf;
+            setExtra(getBrutoMirpf());
         }
         if(mes==9){
-            int numHijos=emp.getnHij();
+            int numHijos=getEmp().getnHij();
             if(numHijos>0){
-                extra=numHijos*100;
+                setExtra(numHijos*100);
             }
         }       
+    }
+    public void calculoNeto(){
+        setNeto(getBrutoMirpf() + getExtra());
     }
      //ponemos nombre del mes en vez de numero
     public String muestraMes()
@@ -74,43 +83,43 @@ public class Nomina {
         switch(mes)
         {
             case 1:
-                mesN="Enero";
+                setMesN("Enero");
                 break;
             case 2:
-                mesN="Febrero";
+                setMesN("Febrero");
                 break;
             case 3:
-                mesN="Marzo";
+                setMesN("Marzo");
                 break;
             case 4:
-                mesN="Abril";
+                setMesN("Abril");
                 break;
             case 5:
-                mesN="Mayo";
+                setMesN("Mayo");
                 break;
             case 6:
-                mesN="Junio";
+                setMesN("Junio");
                 break;
             case 7:
-                mesN="Julio";
+                setMesN("Julio");
                 break;
             case 8:
-                mesN="Agosto";
+                setMesN("Agosto");
                 break;
             case 9:
-                mesN="Septiembre";
+                setMesN("Septiembre");
                 break;
             case 10:
-                mesN="Octubre";
+                setMesN("Octubre");
                 break;
             case 11:
-                mesN="Noviembre";
+                setMesN("Noviembre");
                 break;
             case 12:
-                mesN="Diciembre";
+                setMesN("Diciembre");
                 break;
         }
-        return mesN;
+        return getMesN();
     }
     //para el nombre del campo de la tabla de la BBDD
     public String tablaMes()
@@ -118,43 +127,43 @@ public class Nomina {
         switch(mes)
         {
             case 1:
-                mesL="hEnero";
+                setMesL("hEnero");
                 break;
             case 2:
-                mesL="hFebrero";
+                setMesL("hFebrero");
                 break;
             case 3:
-                mesL="hMarzo";
+                setMesL("hMarzo");
                 break;
             case 4:
-                mesL="hAbril";
+                setMesL("hAbril");
                 break;
             case 5:
-                mesL="hMayo";
+                setMesL("hMayo");
                 break;
             case 6:
-                mesL="hJunio";
+                setMesL("hJunio");
                 break;
             case 7:
-                mesL="hJulio";
+                setMesL("hJulio");
                 break;
             case 8:
-                mesL="hAgosto";
+                setMesL("hAgosto");
                 break;
             case 9:
-                mesL="hSeptiembre";
+                setMesL("hSeptiembre");
                 break;
             case 10:
-                mesL="hOctubre";
+                setMesL("hOctubre");
                 break;
             case 11:
-                mesL="hNoviembre";
+                setMesL("hNoviembre");
                 break;
             case 12:
-                mesL="hDiciembre";
+                setMesL("hDiciembre");
                 break;
         }
-        return mesL;
+        return getMesL();
     }
 
     /**
@@ -245,13 +254,118 @@ public class Nomina {
      * @return the mes
      */
     public String getMes() {
-        return mesL;
+        return getMesL();
     }
 
     /**
      * @param mes the mes to set
      */
     public void setMes(String mesL) {
+        this.setMesL(mesL);
+    }
+
+    /**
+     * @return the brutoMirpf
+     */
+    public double getBrutoMirpf() {
+        return brutoMirpf;
+    }
+
+    /**
+     * @param brutoMirpf the brutoMirpf to set
+     */
+    public void setBrutoMirpf(double brutoMirpf) {
+        this.brutoMirpf = brutoMirpf;
+    }
+
+    /**
+     * @return the dinCat
+     */
+    public int getDinCat() {
+        return dinCat;
+    }
+
+    /**
+     * @param dinCat the dinCat to set
+     */
+    public void setDinCat(int dinCat) {
+        this.dinCat = dinCat;
+    }
+
+    /**
+     * @return the mesL
+     */
+    public String getMesL() {
+        return mesL;
+    }
+
+    /**
+     * @param mesL the mesL to set
+     */
+    public void setMesL(String mesL) {
         this.mesL = mesL;
+    }
+
+    /**
+     * @return the mesN
+     */
+    public String getMesN() {
+        return mesN;
+    }
+
+    /**
+     * @param mesN the mesN to set
+     */
+    public void setMesN(String mesN) {
+        this.mesN = mesN;
+    }
+
+    /**
+     * @return the con
+     */
+    public BaseDatos getCon() {
+        return con;
+    }
+
+    /**
+     * @param con the con to set
+     */
+    public void setCon(BaseDatos con) {
+        this.con = con;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    /**
+     * @return the emp
+     */
+    public Empleado getEmp() {
+        return emp;
+    }
+
+    /**
+     * @param emp the emp to set
+     */
+    public void setEmp(Empleado emp) {
+        this.emp = emp;
+    }
+
+    /**
+     * @param mes the mes to set
+     */
+    public void setMes(int mes) {
+        this.mes = mes;
     }
 }
