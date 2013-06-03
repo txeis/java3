@@ -66,11 +66,9 @@ public class VMenu extends JFrame implements ActionListener, WindowListener{
         
         if(control.equals(alta)){
             if(estado==0){
-                estado=0;
                 VAlta vAlta=new VAlta("ALTA OFICINAS", con, estado);
             }
             if(estado==1){
-                estado=1;
                 VAlta vAlta=new VAlta("ALTA LABORAL", con, estado);
             }
         }
@@ -83,6 +81,12 @@ public class VMenu extends JFrame implements ActionListener, WindowListener{
             }
         }
         if(control.equals(modificacion)){
+            if(estado==0){
+                Vmodif vModif=new Vmodif("MODIFICACIÓN OFICINAS", con, estado);
+            }
+            if(estado==1){
+                Vmodif vModif=new Vmodif("MODIFICACIÓN LABORAL", con, estado);
+            }
         }
         if(control.equals(consulta)){
         }
