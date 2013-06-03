@@ -178,7 +178,7 @@ public class BaseDatos extends JFrame{
      * @param empleado 
      */
     public boolean altaEmpleado(Empleado empleado){  
-      
+        System.out.println("entro en alta");
         try {
             if(!existe(empleado)){
                 if(empleado instanceof Laboral){
@@ -229,41 +229,40 @@ public class BaseDatos extends JFrame{
     
     public boolean modifEmp(Empleado empleado){
         try {
-            if(!existe(empleado)){
-                if(empleado instanceof Laboral){
-                    Laboral laboral=(Laboral)empleado;
-                    int [] horas=laboral.getHoras();
-                    int h1=horas[0];
-                    int h2=horas[1];
-                    int h3=horas[2];
-                    int h4=horas[3];
-                    int h5=horas[4];
-                    int h6=horas[5];
-                    int h7=horas[6];
-                    int h8=horas[7];
-                    int h9=horas[8];
-                    int h10=horas[9];
-                    int h11=horas[10];
-                    int h12=horas[11];
-                    st.executeUpdate("UPDATE laboral VALUES ('"+laboral.getNom()+
-                        "','"+laboral.getApe()+
-                        "','"+laboral.getnHij()+
-                        "','"+laboral.getCategoria()+
-                        "','"+h1+"','"+h2+"','"+h3+"','"+h4+
-                        "','"+h5+"','"+h6+"','"+h7+"','"+h8+
-                        "','"+h9+"','"+h10+"','"+h11+"','"+h12+"') where dni like '"+laboral.getDni()+"';");
-                    return true;
-                }
-                if(empleado instanceof Oficinas){
-                    Oficinas oficina=(Oficinas)empleado;
-                    st.executeUpdate("UPDATE INTO oficinas VALUES ('"+oficina.getNom()+
-                        "','"+oficina.getApe()+
-                        "','"+oficina.getnHij()+
-                        "','"+oficina.getCategoria()+
-                        "','"+oficina.getPuesto()+"') where dni like '"+oficina.getDni()+"';");
-                    return true;
-                }
+            if(empleado instanceof Laboral){
+                Laboral laboral=(Laboral)empleado;
+                int [] horas=laboral.getHoras();
+                int h1=horas[0];
+                int h2=horas[1];
+                int h3=horas[2];
+                int h4=horas[3];
+                int h5=horas[4];
+                int h6=horas[5];
+                int h7=horas[6];
+                int h8=horas[7];
+                int h9=horas[8];
+                int h10=horas[9];
+                int h11=horas[10];
+                int h12=horas[11];
+                st.executeUpdate("UPDATE laboral SET nombre= '"+laboral.getNom()+
+                    "',apellidos= '"+laboral.getApe()+
+                    "',hijos= '"+laboral.getnHij()+
+                    "',categoria= '"+laboral.getCategoria()+
+                    "',hEnero= '"+h1+"',hFebrero= '"+h2+"',hMarzo= '"+h3+"',hAbril= '"+h4+
+                    "',hMayo= '"+h5+"',hJunio= '"+h6+"',hJulio= '"+h7+"',hAgosto= '"+h8+
+                    "',hSeptiembre= '"+h9+"',hOctubre= '"+h10+"',hNoviembre= '"+h11+"',hDiciembre= '"+h12+"' where dni= '"+laboral.getDni()+"';");
+                return true;
             }
+            if(empleado instanceof Oficinas){
+                Oficinas oficina=(Oficinas)empleado;
+                st.executeUpdate("UPDATE oficinas SET nombre= '"+oficina.getNom()+
+                    "',apellidos= '"+oficina.getApe()+
+                    "',hijos= '"+oficina.getnHij()+
+                    "',categoria= '"+oficina.getCategoria()+
+                    "',puesto= '"+oficina.getPuesto()+"' WHERE dni= '"+oficina.getDni()+"';");
+                return true;
+            }
+
             else{
                 Vmensaje msj=new Vmensaje("Ya existe un empleado con ese dni.");
                 return false;

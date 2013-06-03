@@ -374,7 +374,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
     public void actionPerformed(ActionEvent e) {
         Object control=e.getSource();
             if(control.equals(guardar)){
-                if(!dni.equals(Tdni.getText())){
+                if(!(dni.equals(Tdni.getText()))){
                     Vmensaje msj=new Vmensaje("El dni no puede cambiarse.");
                     Tdni.setText(dni);
                 }
