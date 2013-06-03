@@ -94,7 +94,7 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
                 else{
                     Tdni.setText("");
                 }
-                Vnomina nomina=new Vnomina(cadena,con,estado);
+                Vnomina nomina=new Vnomina(cadena,con,estado, empleado,Integer.parseInt(Tmes.getText()));
                 this.dispose();
             }
             

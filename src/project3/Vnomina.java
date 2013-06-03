@@ -18,7 +18,7 @@ public class Vnomina extends JFrame{
      int estado;
      BaseDatos con;
     
-     JLabel mes;
+     JLabel mesHoras;
      JLabel nombre;
      JLabel categoria;
      JLabel hijos;
@@ -27,7 +27,7 @@ public class Vnomina extends JFrame{
      JLabel extra;
      JLabel SN;
      
-    public Vnomina(String cadena, BaseDatos con,int estado){
+    public Vnomina(String cadena, BaseDatos con,int estado, Empleado emp, int mes){
         this.estado=estado;
         this.con=con;
         c=(JPanel)this.getContentPane();  
@@ -38,7 +38,11 @@ public class Vnomina extends JFrame{
         c.setBackground(Color.GREEN);
         c.setLayout(new GridLayout(8,1,10,10));
         
-        mes=new JLabel("");
+        
+        Nomina nomina=new Nomina(con,estado,emp,mes);
+        
+        
+        mesHoras=new JLabel("");
         nombre=new JLabel("");
         categoria=new JLabel("");
         hijos=new JLabel("");
@@ -47,7 +51,7 @@ public class Vnomina extends JFrame{
         extra=new JLabel("");
         SN=new JLabel("");
         
-        c.add(mes);
+        c.add(mesHoras);
         c.add(nombre);
         c.add(categoria);
         c.add(hijos);
