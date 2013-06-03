@@ -63,7 +63,7 @@ public class Vconsulta extends JFrame implements ActionListener, WindowListener{
         }
         if(control.equals(buscarApe)){
             String ape=Tape.getText();
-            
+            con.buscarApellido(ape, estado);
         }
     }
 

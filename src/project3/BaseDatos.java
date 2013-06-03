@@ -96,37 +96,35 @@ public class BaseDatos{
      * buscar parte del apellido
      */
     
-    public Empleado buscarApellido(String ape, int estado){
+    public void buscarApellido(String ape, int estado){
         
      try{
             if(estado==0){
                 rs=st.executeQuery("Select dni,nombre,apellidos from oficinas where apellidos LIKE '%"+ape+"%';");
-                if(rs.next()){
-                    Oficinas oficinas=new Oficinas(rs.getString(1),rs.getString(2),
-                            rs.getString(3));
-                    return oficinas;
+                
+                TreeSet<Empleado> ts=new TreeSet();
+                while(rs.next()){
+                    System.out.println("entro a buscar ape");
+                    Oficinas oficinas=new Oficinas(rs.getString(1),rs.getString(2),rs.getString(3));
+                    ts.add(oficinas);
                 }
-                else{
-                    Vmensaje msj=new Vmensaje("No se encuentra el apellido.");
-                }
+                visualiza(ts);
+                
             }
             if(estado==1){
                 rs=st.executeQuery("Select dni,nombre,apellidos from laboral where apellidos LIKE '%"+ape+"%';");
-                
-                if(rs.next()){
-                    Laboral laboral=new Laboral(rs.getString(1),rs.getString(2),
-                            rs.getString(3));
-                    return laboral;
+                TreeSet<Empleado> ts2=new TreeSet();
+                while(rs.next()){
+                    Laboral laboral=new Laboral(rs.getString(1),rs.getString(2),rs.getString(3));
+                    ts2.add(laboral);
+                    
                 }
-                else{
-                    Vmensaje msj=new Vmensaje("No se encuentra el apellido.");
-                }
+                visualiza(ts2);
             }
         }
         catch (SQLException ex){
             System.out.println ("ERROR: "+ex);
         }  
-        return null;
     }
     
     /**
@@ -274,21 +272,6 @@ public class BaseDatos{
         return false;
     
     }
-    /*public void altaCategoria(Categoria cat){  
-      
-        try {
-                st.executeUpdate("INSERT INTO categoria VALUES ('"+cat.getCategoria()+
-                        "','"+cat.getSueldo()+"');");
-        } 
-        catch (SQLException ex){
-                Mensaje msj=new Mensaje("ERROR: "+ex);
-                System.out.println(("ERROR: "+ex));
-        }
-    } */
-    
-   /* public Laboral buscaLaboral(){
-        
-    }*/
     
     public boolean bajaEmpleado(Empleado empleado){  
         try {
