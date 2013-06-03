@@ -97,6 +97,12 @@ public class VMenu extends JFrame implements ActionListener, WindowListener{
             }
         }
         if(control.equals(nomina)){
+            if(estado==0){
+                VbuscarNomina vBuscarNomina=new VbuscarNomina("NOMINA OFICINAS", con, estado);
+            }
+            if(estado==1){
+                VbuscarNomina vBuscarNomina=new VbuscarNomina("NOMINA LABORAL", con, estado);
+            }
         }
     }
 
