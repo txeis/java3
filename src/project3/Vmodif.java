@@ -431,18 +431,18 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
                         h10=horas[9];
                         h11=horas[10];
                         h12=horas[11];
-                        Lh1.setText(Integer.toString(h1));
-                        Lh2.setText(Integer.toString(h2));
-                        Lh3.setText(Integer.toString(h3));
-                        Lh4.setText(Integer.toString(h4));
-                        Lh5.setText(Integer.toString(h5));
-                        Lh6.setText(Integer.toString(h6));
-                        Lh7.setText(Integer.toString(h7));
-                        Lh8.setText(Integer.toString(h8));
-                        Lh9.setText(Integer.toString(h9));
-                        Lh10.setText(Integer.toString(h10));
-                        Lh11.setText(Integer.toString(h11));
-                        Lh12.setText(Integer.toString(h12));
+                        Th1.setText(Integer.toString(h1));
+                        Th2.setText(Integer.toString(h2));
+                        Th3.setText(Integer.toString(h3));
+                        Th4.setText(Integer.toString(h4));
+                        Th5.setText(Integer.toString(h5));
+                        Th6.setText(Integer.toString(h6));
+                        Th7.setText(Integer.toString(h7));
+                        Th8.setText(Integer.toString(h8));
+                        Th9.setText(Integer.toString(h9));
+                        Th10.setText(Integer.toString(h10));
+                        Th11.setText(Integer.toString(h11));
+                        Th12.setText(Integer.toString(h12));
                     }
                 }
             }
