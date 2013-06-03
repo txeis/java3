@@ -15,6 +15,11 @@ public class Oficinas extends Empleado{
         super(dni,nom,ape,nHij,categoria);
         this.puesto=puesto;
     }
+    
+    public Oficinas(String dni,String nom,String ape){
+        super(dni,nom,ape);
+    }
+    
     public int ofiCorrecto(){
         int m=empCorrecto();
         if(m==0){
