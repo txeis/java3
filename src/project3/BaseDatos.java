@@ -5,14 +5,14 @@
 package project3;
 
 import java.sql.*;
-import java.util.LinkedList;
-import javax.swing.*;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
  *
  * @author Alumno
  */
-public class BaseDatos extends JFrame{
+public class BaseDatos{
     Connection con=null;
     Statement st=null;
     ResultSet rs=null;
@@ -314,15 +314,27 @@ public class BaseDatos extends JFrame{
     try {
             st=con.createStatement();
             
-            rs=st.executeQuery("SELECT l.dni, l.nombre, l.apellidos, o.dni, "
-                    + "o.nombre, o.apellidos  FROM laboral l, oficinas o;");
-            Vlistado list=new Vlistado();
+            rs=st.executeQuery("SELECT dni, nombre, apellidos  FROM oficinas;");
+            
             //insertamos el contenido de las columnas
-            LinkedList<String> lk=new LinkedList();
+            TreeSet<Empleado> ts=new TreeSet();
+            while(rs.next()){
+               Empleado emp=new Oficinas(rs.getString(1),rs.getString(2),rs.getString(3));
+               ts.add(emp);
+            }
+            rs=st.executeQuery("SELECT dni, nombre, apellidos  FROM laboral;");
+            
             while(rs.next()){
                Empleado emp=new Laboral(rs.getString(1),rs.getString(2),rs.getString(3));
-               list.muestraEmp(emp);
-               lk.add(rs.getString(2));
+               
+               ts.add(emp);
+            }
+            Empleado emp;
+            Iterator it=ts.iterator();
+            Vlistado list=new Vlistado();
+            while(it.hasNext()){
+                emp=(Empleado)it.next();
+                list.muestraEmp(emp);
             }
             
         } catch (SQLException ex){

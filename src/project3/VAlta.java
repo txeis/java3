@@ -385,8 +385,6 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
                         Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
                         Tcategoria.getText().toUpperCase(),horas);
                 camposCorrectos(laboral);
-                con.altaEmpleado(laboral);
-                this.dispose();
             }
         }
             if(control.equals(borrar)){

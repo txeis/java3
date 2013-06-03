@@ -38,10 +38,11 @@ public class Vlistado extends JFrame implements ActionListener, WindowListener{
         modelo.addColumn ("DNI");
         modelo.addColumn ("NOMBRE");
         modelo.addColumn ("APELLIDOS");
+        modelo.addColumn ("TIPO");
     }
     public void muestraEmp(Empleado emp){
         
-        modelo.addRow(emp.muestraEmp());
+        modelo.addRow(emp.muestraEmp(emp));
     
     }
     @Override

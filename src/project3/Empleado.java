@@ -10,13 +10,14 @@ import java.io.IOException;
  *
  * @author Alumno
  */
-public abstract class Empleado {
+public abstract class Empleado implements Comparable <Empleado>{
     
     private String dni="a";
     private String nom="a";//nombre
     private String ape="a";//apellidos
     private int nHij=0;//numero de hijos
     private String categoria="C";
+    
     
     public Empleado(String dni,String nom,String ape,int nHij,String categoria){
         this.dni=dni;
@@ -35,6 +36,17 @@ public abstract class Empleado {
         this.dni=dni;
         this.nom=nom;
         this.ape=ape;
+    }
+    @Override
+    public int compareTo(Empleado emp){
+        int com=nom.compareTo(emp.nom);
+        if(com==0){
+            int com2=ape.compareTo(emp.ape);
+            return com2;
+        }
+        else{
+            return com;
+        }
     }
     /**
      * @return the dni
@@ -122,8 +134,15 @@ public abstract class Empleado {
         return true;
     }
     
-    public String[] muestraEmp(){
-        String[] arrayEmp={dni,nom,ape};
+    public String[] muestraEmp(Empleado emp){
+        String tipo="";
+        if(emp instanceof Oficinas){
+            tipo="OFICINAS";
+        }
+        if(emp instanceof Laboral){
+            tipo="LABORALES";
+        }
+        String[] arrayEmp={dni,nom,ape,tipo};
         return arrayEmp;
     }
     public int empCorrecto(){
@@ -152,5 +171,6 @@ public abstract class Empleado {
         }
         return 0;
     }
+   
 }
     
