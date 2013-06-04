@@ -89,13 +89,18 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
                 if(empleado!=null){
                     if(con.existe(empleado)){
                         comprobarMes();
+                        Vnomina nomina=new Vnomina(cadena,con,estado, empleado,Integer.parseInt(Tmes.getText()));
+                        this.dispose();
                     }
                 }
                 else{
                     Tdni.setText("");
                 }
-                Vnomina nomina=new Vnomina(cadena,con,estado, empleado,Integer.parseInt(Tmes.getText()));
-                this.dispose();
+                
+            }
+            else{
+                Vmensaje msj=new Vmensaje("el dni no es correcto");
+                Tdni.setText("");
             }
             
             

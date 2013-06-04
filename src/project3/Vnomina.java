@@ -32,7 +32,7 @@ public class Vnomina extends JFrame{
         this.con=con;
         c=(JPanel)this.getContentPane();  
         this.setTitle(cadena);
-        this.setSize(600,600);
+        this.setSize(400,400);
         this.setLocation(800,200);
         this.setVisible(true);
         c.setBackground(Color.GREEN);
@@ -44,12 +44,12 @@ public class Vnomina extends JFrame{
         
         mesHoras=new JLabel("Nómina del mes de "+nomina.getMesN()+"     Horas realizadas: "+nomina.gethMes());
         nombre=new JLabel("Trabajador: "+emp.getNom()+" "+emp.getApe()+" con dni: "+emp.getDni());
-        categoria=new JLabel("Categoría: "+emp.getCategoria()+" --> "+nomina.getDinCat());
+        categoria=new JLabel("Categoría: "+emp.getCategoria()+" ("+nomina.getDinCat()+" €)");
         hijos=new JLabel("Número de hijos para descuento de IRPF: "+emp.getnHij());
-        SB=new JLabel("Salario bruto: "+nomina.getBruto());
-        IRPF=new JLabel("IRPF a descontar: "+nomina.getIrpf());
-        extra=new JLabel("Pagas extras: "+nomina.getExtra());
-        SN=new JLabel("Salario neto total: "+nomina.getNeto());
+        SB=new JLabel("Salario bruto: "+nomina.getBruto()+" €");
+        IRPF=new JLabel("IRPF a descontar: "+nomina.getIrpf()+" €");
+        extra=new JLabel("Pagas extras: "+nomina.getExtra()+" €");
+        SN=new JLabel("Salario neto total: "+nomina.getNeto()+" €");
         
         c.add(mesHoras);
         c.add(nombre);

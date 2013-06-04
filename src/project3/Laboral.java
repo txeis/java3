@@ -25,8 +25,8 @@ public class Laboral extends Empleado{
         super(dni,nom,ape);
     }
     
-    public int labCorrecto(){
-        int m=empCorrecto();
+    public int labCorrecto(Empleado emp){
+        int m=empCorrecto(emp);
         if(m==0){
             for(int n=0;n<horas.length;n++){
                 if(horas[n]<0 || horas[n]>=100){return n+6;}

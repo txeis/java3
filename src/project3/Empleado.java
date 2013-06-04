@@ -145,12 +145,18 @@ public abstract class Empleado implements Comparable <Empleado>{
         String[] arrayEmp={dni,nom,ape,tipo};
         return arrayEmp;
     }
-    public int empCorrecto(){
+    public int empCorrecto(Empleado emp){
         if(!dniCorrecto(dni)){return 1;}
         if(nom.length()<=0||nom.length()>50 || isNumeric(nom)){return 2;}
         if(ape.length()<=0||ape.length()>100 || isNumeric(ape)){return 3;}
         if(nHij<0||nHij>100){return 4;}
-        if(categoria.length()!=1 || isNumeric(categoria) || (categoria.charAt(0)<'A' || categoria.charAt(0)>'F')){return 5;}
+        if(emp instanceof Oficinas){
+            if(categoria.length()!=1 || isNumeric(categoria) || (categoria.charAt(0)<'A' || categoria.charAt(0)>'C')){return 5;}
+        }
+        if(emp instanceof Laboral){
+            if(categoria.length()!=1 || isNumeric(categoria) || (categoria.charAt(0)<'D' || categoria.charAt(0)>'F')){return 5;}
+        }
+        
         return 0;
     }
     

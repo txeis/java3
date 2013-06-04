@@ -26,18 +26,21 @@ public class Nomina {
         this.mes=mes;
     }
     public void calculoNomina(){
+        System.out.println(emp.getNom());
         recogeDatos();
         calculoIRPF();
         pagasExtraordinarias();
         calculoNeto();
         muestraMes();
+        System.out.println("bruto: "+bruto+" neto: "+neto+" irpf: "+irpf+
+                "irpfHijos: "+irpfHijos+" extra: "+extra+" hMes: "+hMes+" dincat: "+dinCat);
     }
    
     public void recogeDatos(){
         String cat=emp.getCategoria();
-        setDinCat(getCon().dineroCat(cat));
+        setDinCat(con.dineroCat(cat));
         if(estado==0){
-            setBruto(getDinCat());
+            setBruto(dinCat); 
         }
         if(estado==1){
             tablaMes();
@@ -68,7 +71,7 @@ public class Nomina {
             setExtra(getBrutoMirpf());
         }
         if(mes==9){
-            int numHijos=getEmp().getnHij();
+            int numHijos=emp.getnHij();
             if(numHijos>0){
                 setExtra(numHijos*100);
             }

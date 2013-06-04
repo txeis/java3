@@ -250,7 +250,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
         if(emp instanceof Oficinas){
             Oficinas of=(Oficinas)emp;
             
-            switch(of.ofiCorrecto()){
+            switch(of.ofiCorrecto(emp)){
                 case 1:
                     msj=new Vmensaje("El dni es incorrecto.");
                     Tdni.setText("");
@@ -289,7 +289,7 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
         if(emp instanceof Laboral){
             Laboral lab=(Laboral)emp;
             
-            switch(lab.labCorrecto()){
+            switch(lab.labCorrecto(emp)){
                 case 1:
                     msj=new Vmensaje("El dni es incorrecto.");
                     Tdni.setText("");

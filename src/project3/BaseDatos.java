@@ -130,26 +130,32 @@ public class BaseDatos{
     public int hMes(Empleado emp,String mes){
         try{
             rs=st.executeQuery("Select "+mes+" from laboral where dni LIKE '"+emp.getDni()+"';");
-            int hMes=rs.getInt(1);
-            System.out.println(hMes);
-            return hMes;
+            if(rs.next()){
+                int hMes=rs.getInt(1);
+                System.out.println("compribando: "+hMes);
+                return hMes;
+            }
         }
         catch (SQLException ex){
             System.out.println ("ERROR: "+ex);
             return 0;
         }
+        return 0;
     }
     public int dineroCat(String cat){
         try{
             rs=st.executeQuery("Select salarioBase from categoria where codigo LIKE '"+cat+"';");
-            int dinCat=rs.getInt(1);
-            System.out.println(dinCat);
-            return dinCat;
+            if(rs.next()){
+                int dinCat=rs.getInt(1);
+                System.out.println(dinCat);
+                return dinCat;
+            }
         }
         catch (SQLException ex){
             System.out.println ("ERROR: "+ex);
             return 0;
-        } 
+        }
+        return 0;
     }
     
     

@@ -20,8 +20,8 @@ public class Oficinas extends Empleado{
         super(dni,nom,ape);
     }
     
-    public int ofiCorrecto(){
-        int m=empCorrecto();
+    public int ofiCorrecto(Empleado emp){
+        int m=empCorrecto(emp);
         if(m==0){
             if(puesto.length()<=0||puesto.length()>100 || isNumeric(puesto)){return 6;}
         }
