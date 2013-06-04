@@ -32,14 +32,15 @@ public class Vnomina extends JFrame{
         this.con=con;
         c=(JPanel)this.getContentPane();  
         this.setTitle(cadena);
-        this.setSize(400,400);
+        this.setSize(600,400);
         this.setLocation(800,200);
         this.setVisible(true);
         c.setBackground(Color.GREEN);
         c.setLayout(new GridLayout(8,1,10,10));
         
-        
+        System.out.println("entrando a nomina");
         Nomina nomina=new Nomina(con,estado,emp,mes);
+        System.out.println("creando nomina");
         nomina.calculoNomina();
         
         mesHoras=new JLabel("Nómina del mes de "+nomina.getMesN()+"     Horas realizadas: "+nomina.gethMes());

@@ -29,7 +29,7 @@ public class VPersonal extends JFrame implements ActionListener, WindowListener{
         c=(JPanel)this.getContentPane();  
         this.setTitle("PERSONAL");
         this.setSize(300,350);
-        this.setLocation(300,200);
+        this.setLocation(300,500);
         this.setVisible(true);
         c.setLayout(new GridLayout(3,1,0,0));
         

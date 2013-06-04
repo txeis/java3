@@ -37,6 +37,7 @@ public class Nomina {
     }
    
     public void recogeDatos(){
+        
         String cat=emp.getCategoria();
         setDinCat(con.dineroCat(cat));
         if(estado==0){
