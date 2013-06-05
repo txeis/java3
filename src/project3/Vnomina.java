@@ -43,9 +43,9 @@ public class Vnomina extends JFrame{
         }
         c.setLayout(new GridLayout(8,1,10,10));
         
-        System.out.println("entrando a nomina");
+        
         Nomina nomina=new Nomina(con,estado,emp,mes);
-        System.out.println("creando nomina");
+        
         nomina.calculoNomina();
         
         mesHoras=new JLabel("Nómina del mes de "+nomina.getMesN()+"     Horas realizadas: "+nomina.gethMes());

@@ -107,7 +107,6 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
         cerrar.addActionListener(this);
         guardar.addActionListener(this);
         this.addWindowListener(this);
-        System.out.println(estado);
     }
     public void addComunes(){
         

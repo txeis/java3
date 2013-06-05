@@ -118,7 +118,6 @@ public abstract class Empleado implements Comparable <Empleado>{
         this.categoria = categoria;
     }
     public static boolean dniCorrecto(String dni){
-        System.out.println("entro en dni correcto: "+ dni);
         char c;
         if(dni.length()!=9 ){
             return false;

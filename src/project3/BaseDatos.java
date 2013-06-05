@@ -27,7 +27,6 @@ public class BaseDatos{
         try {
             con=DriverManager.getConnection(url,user,password);
             st=con.createStatement();
-            System.out.println("establezco conexion");
             
         } 
         catch (SQLException ex){
@@ -47,7 +46,6 @@ public class BaseDatos{
             }
             catch(SQLException ex){
                 Vmensaje m=new Vmensaje("error:  "+ex);
-                System.out.println(("ERROR: "+ex));
             } 
     }
     
@@ -88,7 +86,7 @@ public class BaseDatos{
             }
         }
         catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
         }  
         return null;
     }
@@ -105,7 +103,6 @@ public class BaseDatos{
                 
                 TreeSet<Empleado> ts=new TreeSet();
                 while(rs.next()){
-                    System.out.println("entro a buscar ape");
                     Oficinas oficinas=new Oficinas(rs.getString(1),rs.getString(2),rs.getString(3));
                     ts.add(oficinas);
                 }
@@ -124,7 +121,7 @@ public class BaseDatos{
             }
         }
         catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
         }  
     }
     
@@ -133,12 +130,11 @@ public class BaseDatos{
             rs=st.executeQuery("Select "+mes+" from laboral where dni LIKE '"+emp.getDni()+"';");
             if(rs.next()){
                 int hMes=rs.getInt(1);
-                System.out.println("compribando: "+hMes);
                 return hMes;
             }
         }
         catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
             return 0;
         }
         return 0;
@@ -148,12 +144,11 @@ public class BaseDatos{
             rs=st.executeQuery("Select sueldoBase from categoria where codigo LIKE '"+cat+"';");
             if(rs.next()){
                 int dinCat=rs.getInt(1);
-                System.out.println(dinCat);
                 return dinCat;
             }
         }
         catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
             return 0;
         }
         return 0;
@@ -182,7 +177,7 @@ public class BaseDatos{
             }
         }
         catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
         } 
         return false;
     }
@@ -200,11 +195,10 @@ public class BaseDatos{
             if (con!=null){
                 con.close();
             }
-            System.out.println("conexion cerrada");
         }
         catch (SQLException ex){
-            Vmensaje msj=new Vmensaje("Error cerrando la conexión");
-            System.out.println(("ERROR: "+ex));
+            Vmensaje msj=new Vmensaje("Error cerrando la conexión: "+ex);
+            
         }   
     }
     /**
@@ -212,7 +206,6 @@ public class BaseDatos{
      * @param empleado 
      */
     public boolean altaEmpleado(Empleado empleado){  
-        System.out.println("entro en alta");
         try {
             if(!existe(empleado)){
                 if(empleado instanceof Laboral){
@@ -256,7 +249,6 @@ public class BaseDatos{
             }
         } catch (SQLException ex){
            Vmensaje msj=new Vmensaje("ERROR: "+ex);
-           System.out.println(("ERROR: "+ex));
         }
         return false;
     } 
@@ -303,7 +295,6 @@ public class BaseDatos{
             }
         } catch (SQLException ex){
            Vmensaje msj=new Vmensaje("ERROR: "+ex);
-           System.out.println(("ERROR: "+ex));
         }
         return false;
     
@@ -312,19 +303,16 @@ public class BaseDatos{
     public boolean bajaEmpleado(Empleado empleado){  
         try {
             if(empleado instanceof Laboral){
-                System.out.println("entro a borrar de laboral");
                 st.executeUpdate("DELETE from laboral where dni LIKE '"+empleado.getDni()+"';");
                 return true;
             }
             if(empleado instanceof Oficinas){
-                System.out.println("entro a borrar de oficina");
                 st.executeUpdate("DELETE from oficinas where dni LIKE '"+empleado.getDni()+"';");
                 return true;
             }
         } 
         catch (SQLException ex){
                 Vmensaje msj=new Vmensaje("ERROR: "+ex);
-                System.out.println(("ERROR: "+ex));
         }
         return false;
     } 
@@ -351,7 +339,7 @@ public class BaseDatos{
             
             
         } catch (SQLException ex){
-            System.out.println ("ERROR: "+ex);
+            Vmensaje msj=new Vmensaje("ERROR: "+ex);
         }    
     }
     public void visualiza(TreeSet ts){

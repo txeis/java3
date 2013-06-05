@@ -96,7 +96,6 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
             String dni=Tdni.getText();
             if(Empleado.dniCorrecto(dni)){
                 empleado=con.buscarEmpleado(dni, estado);
-                //System.out.println(empleado.getNom());
                 if(empleado!=null){
                     if(con.existe(empleado)){
                         comprobarMes();

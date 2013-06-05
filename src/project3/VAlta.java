@@ -94,7 +94,6 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         alta.addActionListener(this);
         borrar.addActionListener(this);
         this.addWindowListener(this);
-        System.out.println(estado);
     }
     public void addComunes(){
         
