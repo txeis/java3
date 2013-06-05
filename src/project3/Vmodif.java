@@ -385,8 +385,8 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
                 }
                 comprobarCamposNum();    
                 if(estado==0){
-                    Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
-                            Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                    Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText().toUpperCase(),
+                            Tapellidos.getText().toUpperCase(),Integer.parseInt(TnHijos.getText()),
                             Tcategoria.getText().toUpperCase(),Tpuesto.getText());
                     camposCorrectos(oficina);
 
@@ -401,8 +401,8 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
                     Integer.parseInt(Th9.getText()),Integer.parseInt(Th10.getText()),
                     Integer.parseInt(Th11.getText()),Integer.parseInt(Th12.getText())};
 
-                    Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText(),
-                            Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                    Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText().toUpperCase(),
+                            Tapellidos.getText().toUpperCase(),Integer.parseInt(TnHijos.getText()),
                             Tcategoria.getText().toUpperCase(),horas);
                     camposCorrectos(laboral);
                 }

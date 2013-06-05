@@ -364,14 +364,15 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
             
         }
     }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object control=e.getSource();
             if(control.equals(alta)){
             comprobarCamposNum();    
             if(estado==0){
-                Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText(),
-                        Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                Oficinas oficina=new Oficinas(Tdni.getText(),Tnombre.getText().toUpperCase(),
+                        Tapellidos.getText().toUpperCase(),Integer.parseInt(TnHijos.getText()),
                         Tcategoria.getText().toUpperCase(),Tpuesto.getText());
                 camposCorrectos(oficina);
                 
@@ -386,8 +387,8 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
                 Integer.parseInt(Th9.getText()),Integer.parseInt(Th10.getText()),
                 Integer.parseInt(Th11.getText()),Integer.parseInt(Th12.getText())};
 
-                Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText(),
-                        Tapellidos.getText(),Integer.parseInt(TnHijos.getText()),
+                Laboral laboral=new Laboral(Tdni.getText(),Tnombre.getText().toUpperCase(),
+                        Tapellidos.getText().toUpperCase(),Integer.parseInt(TnHijos.getText()),
                         Tcategoria.getText().toUpperCase(),horas);
                 camposCorrectos(laboral);
             }
