@@ -65,6 +65,4 @@ public class Vmensaje extends JFrame implements ActionListener, WindowListener{
     public void windowDeactivated(WindowEvent e) {
     }
     
-    
-    
 }

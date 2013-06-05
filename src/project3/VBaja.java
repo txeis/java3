@@ -136,6 +136,9 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
                     }
                 }
             }
+            else{
+                Vmensaje msj=new Vmensaje("el dni no es correcto.");
+            }
         }
      }
     @Override
