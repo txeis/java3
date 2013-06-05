@@ -49,7 +49,12 @@ public class VBaja extends JFrame implements ActionListener, WindowListener{
         this.setSize(400,400);
         this.setLocation(800,400);
         this.setVisible(true);
-        c.setBackground(Color.GREEN);
+        if(estado==0){
+            c.setBackground(Color.GREEN);
+        }
+        if(estado==1){
+            c.setBackground(Color.CYAN);
+        }
         c.setLayout(new GridLayout(8,2,10,10));
         
         Ldni=new JLabel("DNI: ");

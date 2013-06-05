@@ -35,7 +35,12 @@ public class Vnomina extends JFrame{
         this.setSize(600,400);
         this.setLocation(800,200);
         this.setVisible(true);
-        c.setBackground(Color.GREEN);
+        if(estado==0){
+            c.setBackground(Color.GREEN);
+        }
+        if(estado==1){
+            c.setBackground(Color.CYAN);
+        }
         c.setLayout(new GridLayout(8,1,10,10));
         
         System.out.println("entrando a nomina");

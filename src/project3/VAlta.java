@@ -69,7 +69,12 @@ public class VAlta  extends JFrame implements ActionListener, WindowListener{
         this.setSize(400,600);
         this.setLocation(800,400);
         this.setVisible(true);
-        c.setBackground(Color.GREEN);
+        if(estado==0){
+            c.setBackground(Color.GREEN);
+        }
+        if(estado==1){
+            c.setBackground(Color.CYAN);
+        }
         
         alta=new JButton("ALTA");
         borrar=new JButton("BORRAR");

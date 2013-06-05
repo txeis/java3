@@ -72,7 +72,12 @@ public class Vmodif extends JFrame implements ActionListener, WindowListener{
         this.setSize(400,600);
         this.setLocation(800,400);
         this.setVisible(true);
-        c.setBackground(Color.GREEN);
+        if(estado==0){
+            c.setBackground(Color.GREEN);
+        }
+        if(estado==1){
+            c.setBackground(Color.CYAN);
+        }
         Ldni=new JLabel("DNI: ");
         Tdni=new JTextField();
         buscar=new JButton("BUSCAR");
