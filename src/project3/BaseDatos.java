@@ -144,7 +144,7 @@ public class BaseDatos{
     }
     public int dineroCat(String cat){
         try{
-            rs=st.executeQuery("Select salarioBase from categoria where codigo LIKE '"+cat+"';");
+            rs=st.executeQuery("Select sueldoBase from categoria where codigo LIKE '"+cat+"';");
             if(rs.next()){
                 int dinCat=rs.getInt(1);
                 System.out.println(dinCat);
@@ -185,6 +185,9 @@ public class BaseDatos{
         } 
         return false;
     }
+   /**
+    * Cierra la conexion
+    */
     public void cerrar(){
         try {
             if (rs!=null){

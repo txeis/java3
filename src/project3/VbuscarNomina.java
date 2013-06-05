@@ -57,6 +57,11 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
         borrar.addActionListener(this);
         this.addWindowListener(this);
      }
+     /**
+      * Comprueba que el mes introducido es correcto
+      * es correcto si es un num entre 1 y 12
+      * @return 
+      */
      public boolean comprobarMes(){
          try{
             int mes=Integer.parseInt(Tmes.getText());
@@ -86,7 +91,7 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
             String dni=Tdni.getText();
             if(Empleado.dniCorrecto(dni)){
                 empleado=con.buscarEmpleado(dni, estado);
-                System.out.println(empleado.getNom());
+                //System.out.println(empleado.getNom());
                 if(empleado!=null){
                     if(con.existe(empleado)){
                         comprobarMes();
@@ -116,6 +121,7 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
     @Override
     public void windowClosing(WindowEvent we) {
         System.exit(0);
+        con.cerrar();
     }
 
     @Override

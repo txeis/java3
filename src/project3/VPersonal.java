@@ -79,6 +79,7 @@ public class VPersonal extends JFrame implements ActionListener, WindowListener{
     @Override
     public void windowClosing(WindowEvent e) {
         System.exit(0);
+        con.cerrar();
     }
 
     @Override
