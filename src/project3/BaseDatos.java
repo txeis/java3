@@ -68,15 +68,16 @@ public class BaseDatos{
             }
             if(estado==1){
                 rs=st.executeQuery("Select * from laboral where dni LIKE '"+dni+"';");
-                
-                int [] horas={Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),
-                Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(9)),
-                Integer.parseInt(rs.getString(10)),Integer.parseInt(rs.getString(11)),
-                Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(13)),
-                Integer.parseInt(rs.getString(14)),Integer.parseInt(rs.getString(15)),
-                Integer.parseInt(rs.getString(16)),Integer.parseInt(rs.getString(17))};
-                
                 if(rs.next()){
+                    
+                    int [] horas={Integer.parseInt(rs.getString(6)),Integer.parseInt(rs.getString(7)),
+                    Integer.parseInt(rs.getString(8)),Integer.parseInt(rs.getString(9)),
+                    Integer.parseInt(rs.getString(10)),Integer.parseInt(rs.getString(11)),
+                    Integer.parseInt(rs.getString(12)),Integer.parseInt(rs.getString(13)),
+                    Integer.parseInt(rs.getString(14)),Integer.parseInt(rs.getString(15)),
+                    Integer.parseInt(rs.getString(16)),Integer.parseInt(rs.getString(17))};
+                
+                
                     Laboral laboral=new Laboral(rs.getString(1),rs.getString(2),
                             rs.getString(3),Integer.parseInt(rs.getString(4)),rs.getString(5), horas);
                     return laboral;
