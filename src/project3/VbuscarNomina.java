@@ -124,8 +124,7 @@ public class VbuscarNomina extends JFrame implements ActionListener, WindowListe
 
     @Override
     public void windowClosing(WindowEvent we) {
-        System.exit(0);
-        con.cerrar();
+        this.dispose();
     }
 
     @Override
